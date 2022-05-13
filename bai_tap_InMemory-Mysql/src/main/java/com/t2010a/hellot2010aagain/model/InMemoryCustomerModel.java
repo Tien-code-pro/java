@@ -13,7 +13,7 @@ public class InMemoryCustomerModel implements CustomerModel{
         customers = new ArrayList<>();
         customers.add(
                 new Customer("AB1",
-                        "Robert Vu",
+                        "Tien",
                         "028812122",
                         "adj.jpg",
                         LocalDateTime.of(2002,3,28,10,10),
@@ -23,7 +23,7 @@ public class InMemoryCustomerModel implements CustomerModel{
         );
         customers.add(
                 new Customer("AB2",
-                        "Robert Tue",
+                        "abc tien",
                         "0225191282",
                         "adj5.jpg",
                         LocalDateTime.of(2002,3,28,10,10),

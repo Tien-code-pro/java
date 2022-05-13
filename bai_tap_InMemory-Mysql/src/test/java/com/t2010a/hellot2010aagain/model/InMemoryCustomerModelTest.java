@@ -20,7 +20,7 @@ class InMemoryCustomerModelTest {
     void create() {
         System.out.println(model.findAll().size());
         Customer customer = new Customer("AB02",
-                "Tue",
+                "Tien",
                 "021351545",
                 "dat.jpg",
                 LocalDateTime.of(2002,3,10,10,10)
@@ -44,7 +44,7 @@ class InMemoryCustomerModelTest {
     @Test
     void update() {
         Customer customer = model.findById("AB1");
-        customer.setName("Tue pro");
+        customer.setName("Tien pro");
         model.update("A001", customer);
         for (Customer st: model.findAll()) {
             System.out.println(st.toString());
