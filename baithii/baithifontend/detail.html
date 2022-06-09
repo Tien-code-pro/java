@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="content-detail"></div>
+</body>
+</html>
+
+
+<script>
+    function getParameterFromUrl(parameterName){
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        return url.searchParams.get(parameterName);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var id = getParameterFromUrl('id');
+      var xmlHttpRequest = new XMLHttpRequest();
+      xmlHttpRequest.onreadystatechange = function () {
+        if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+          // dữ liệu được trả về thành công.
+          var contentText = '';
+          var element = JSON.parse(xmlHttpRequest.responseText);
+          // for (let i = 0; i < jsonResult.length; i++) {
+            // const element = jsonResult[i];
+            contentText += `
+                              <p> ${element.id} </p>
+                              <p> ${element.name} </p>
+                              <p> ${element.slug} </p>
+                              <p> ${element.descriptions} </p>
+                              <p> ${element.detail} </p>
+                              <p> ${element.price} </p>
+                              <p> 
+                                  <img src="${element.image}" alt="${element.name}" width="100px">  
+                              </p>
+                              <p> ${element.manufacturer} </p>
+                              <p> ${element.status} </p>
+                            `
+          // }
+          var listProduct = document.getElementById('content-detail');
+          if (listProduct !== undefined) {
+            listProduct.innerHTML = contentText;
+          }
+        }
+      }
+      xmlHttpRequest.open('GET', `https://product-vegetable.herokuapp.com/api/v1/products/${id}`, false);
+      xmlHttpRequest.send();
+    })
+  
+  </script>
